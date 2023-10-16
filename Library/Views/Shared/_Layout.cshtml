@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
+    <h1>Library @ViewBag.Path</h1>
+      @Html.ActionLink("Home", "Index", "Home") |
+      @Html.ActionLink("Books", "Index", "Books") | 
+      @Html.ActionLink("Authors", "Index", "Authors")
+    <hr/>
     @RenderBody()
   </body>
 </html>

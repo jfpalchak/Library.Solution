@@ -21,7 +21,21 @@ namespace Library.Controllers
 
     public ActionResult Index()
     {
+      List<Author> authors = _db.Authors.ToList();
+      return View(authors);
+    }
+
+    public ActionResult Create()
+    {
       return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Author author)
+    {
+      _db.Authors.Add(author);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }
