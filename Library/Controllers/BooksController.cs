@@ -10,18 +10,32 @@ using System.Security.Claims;
 
 namespace Library.Controllers
 {
-  public class HomeController : Controller
+  public class BooksController : Controller
   {
     private readonly LibraryContext _db;
 
-    public HomeController(LibraryContext db)
+    public BooksController(LibraryContext db)
     {
       _db = db;
     }
 
     public ActionResult Index()
     {
+      List<Book> books = _db.Books.ToList();
+      return View(books);
+    }
+
+    public ActionResult Create()
+    {
       return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Book book)
+    {
+      _db.Books.Add(book);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

@@ -10,11 +10,11 @@ using System.Security.Claims;
 
 namespace Library.Controllers
 {
-  public class HomeController : Controller
+  public class AuthorsController : Controller
   {
     private readonly LibraryContext _db;
 
-    public HomeController(LibraryContext db)
+    public AuthorsController(LibraryContext db)
     {
       _db = db;
     }
