@@ -2,4 +2,11 @@
   Layout = "_Layout";
 }
 
-
+@if (User.Identity.IsAuthenticated)
+{
+  <h4>Welcome to the Library, @User.Identity.Name.</h4>
+}
+else
+{
+  <h4>Welcome to the Library Catalogue.</h4>
+}

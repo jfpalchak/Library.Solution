@@ -11,11 +11,16 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-    <h1>Library @ViewBag.Path</h1>
+    <nav>
+      <h1>Library @ViewBag.Path</h1>
       @Html.ActionLink("Home", "Index", "Home") |
       @Html.ActionLink("Books", "Index", "Books") | 
       @Html.ActionLink("Authors", "Index", "Authors")
-    <hr/>
+      <span style = "float:right; margin-right: 5px;">
+        @Html.ActionLink("Account", "Index", "Account")
+      </span>
+      <hr/>
+    </nav>
     @RenderBody()
   </body>
 </html>

@@ -10,18 +10,25 @@ using System.Security.Claims;
 
 namespace Library.Controllers
 {
-  public class HomeController : Controller
+  public class AccountController : Controller
   {
     private readonly LibraryContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public HomeController(UserManager<ApplicationUser> userManager, LibraryContext db)
+    public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, LibraryContext db)
     {
-      _db = db;
       _userManager = userManager;
+      _signInManager = signInManager;
+      _db = db;
     }
 
     public ActionResult Index()
+    {
+      return View();
+    }
+
+    public IActionResult Register()
     {
       return View();
     }
