@@ -1,3 +1,30 @@
 @{
   Layout = "_Layout";
 }
+
+@using Library.ViewModels
+@model LoginViewModel
+
+<h4>Log In to User Account</h4>
+<hr/>
+
+@if(!ViewData.ModelState.IsValid)
+{
+  @Html.ValidationSummary("Please fix the following error(s):")
+}
+<div class="login-form container">
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(user => user.Email)
+    <br/>
+    @Html.TextBoxFor(user => user.Email)
+    <br/>
+    @Html.LabelFor(user => user.Password)
+    <br/>
+    @Html.EditorFor(user => user.Password)
+    <br/>
+    <br/>
+
+    <input type="submit" value="Log In" class="btn btn-primary" />
+  }
+</div>
