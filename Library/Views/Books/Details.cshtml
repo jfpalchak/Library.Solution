@@ -9,10 +9,12 @@
 <hr/>
 
 <h5>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h5>
-@Html.ActionLink("Add Author", "AddAuthor", new { id = Model.BookId }) |
-@Html.ActionLink("Edit Book", "Edit", new { id = Model.BookId }) |
-@Html.ActionLink("Delete Book", "Delete", new { id = Model.BookId })
-
+@if (User.Identity.IsAuthenticated)
+{
+  @Html.ActionLink("Add Author", "AddAuthor", new { id = Model.BookId }) @:|
+  @Html.ActionLink("Edit Book", "Edit", new { id = Model.BookId }) @:|
+  @Html.ActionLink("Delete Book", "Delete", new { id = Model.BookId })
+}
 <br/> 
 <br/> 
 @if(Model.JoinEntities.Count == 0)

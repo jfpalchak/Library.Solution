@@ -1,4 +1,5 @@
 using Library.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using System.Security.Claims;
 
 namespace Library.Controllers
 {
+  [Authorize]
   public class BooksController : Controller
   {
     private readonly LibraryContext _db;
@@ -19,6 +21,7 @@ namespace Library.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<Book> books = _db.Books.ToList();
@@ -38,6 +41,7 @@ namespace Library.Controllers
       return RedirectToAction("Index");
     }
 
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       Book thisBook = _db.Books
